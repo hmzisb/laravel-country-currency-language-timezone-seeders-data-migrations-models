@@ -1,52 +1,70 @@
-# Laravel country, currency, language, and timezone seeders
+# 🌍 Countries, currencies, languages & timezones for Laravel
+
+**Ready-to-use data for your Laravel app.**
 
 [![Tests](https://github.com/hmzisb/laravel-country-currency-language-timezone-seeders-data-migrations-models/actions/workflows/tests.yml/badge.svg)](https://github.com/hmzisb/laravel-country-currency-language-timezone-seeders-data-migrations-models/actions/workflows/tests.yml)
 
-Add country, currency, language, and IANA timezone data to a Laravel app that uses PostgreSQL. The Composer package ships four JSON catalogs, a migration, a repeatable database seeder, and four Eloquent models.
+## 📦 What you get
 
-Use these catalogs for country and timezone pickers, onboarding forms, localization settings, or currency display. The package puts country-to-catalog mappings in PostgreSQL JSONB arrays, so you can look up the options for a country from four tables. Seeding uses local files and needs no API or network access.
+| Data | Included |
+| --- | --- |
+| 🌍 **Countries** | 249 countries and territories, with names, codes and flags |
+| 💱 **Currencies** | 178 currency-related codes, with names, symbols and details where available |
+| 🗣️ **Languages** | 285 language codes, with names and native names where available |
+| 🕒 **Timezones** | 419 timezone identifiers, such as `Asia/Karachi` |
 
-## Why it was built
+**Requires Laravel 12 or 13 and PostgreSQL.**
 
-Many Laravel projects need the same country lists, currency codes, language names, and timezone choices. This package keeps that reference data in one versioned source, with reusable migrations and Eloquent models, so each project does not have to maintain its own copies or depend on a live API.
+**Choose a country. Get its currencies, languages and timezones.**
 
-It can support:
+The package also includes:
 
-- Country, language, currency, and timezone dropdowns in registration and account settings.
-- SaaS onboarding, organization profiles, marketplaces, directories, and geographic filters.
-- Regional defaults and localization tools that need ISO identifiers and native names.
-- Currency display and country-specific options, with payment acceptance handled by the application.
-- Offline imports, test fixtures, and reference-data APIs built on your own Laravel models.
+- 🛠️ **Database setup** to create the tables.
+- 🌱 **A seeder** to load the data into them.
+- 🧩 **Laravel models** to read and search the data.
 
-## Included data
+Once installed, loading and reading the data works offline. No external API is needed.
 
-| Catalog | Rows | Coverage |
-| --- | ---: | --- |
-| Countries | 249 | ISO 3166-1 alpha-2 countries and territories |
-| Currencies | 178 | ISO 4217 List One codes, including funds, metals, and special codes |
-| Languages | 285 | All 184 ISO 639-1 codes, plus 101 three-letter codes used in country mappings |
-| Timezones | 419 | IANA identifiers from PHP timezone data 2026.3, including `UTC` |
+## 💡 What can you build?
 
-The snapshot is dated 2026-11-19. The [source documentation](DATA-SOURCES.md) describes coverage, exclusions, and attribution. The [data quality report](data-quality.json) records missing values and source-specific corrections.
+- **Forms:** country, language, currency and timezone choices.
+- **Account settings:** regional preferences and business profiles.
+- **Directories and marketplaces:** country filters and regional options.
 
-## Requirements
+## 🚀 Get started
 
-- Laravel 12 with PHP 8.2 or later, or Laravel 13 with PHP 8.3 or later. The package uses PHP 8 with the `pdo_pgsql`, `mbstring`, and `json` extensions.
-- PostgreSQL with a UTF-8 database. The migration and seeder use PostgreSQL JSONB.
-- PHP timezone data that recognizes the bundled identifiers. If validation rejects an identifier such as `America/Coyhaique`, check the timezone data in the PHP runtime running Artisan.
+Open the sections you need.
 
-See [Testing](TESTING.md) for the verified stack and test commands.
+<details>
+<summary><strong>1. Install and load the data</strong></summary>
 
-## Install
+### Check your setup
 
-Run these commands from your Laravel app root.
+| Laravel | Minimum PHP |
+| --- | --- |
+| 12 | 8.2 |
+| 13 | 8.3 |
+
+You also need:
+
+- A PostgreSQL database using UTF-8.
+- PHP extensions: `pdo_pgsql`, `mbstring` and `json`.
+- PHP timezone data that recognizes the included identifiers. If `America/Coyhaique` is rejected, update the timezone data in the PHP runtime running Artisan.
+
+### Install the package
+
+Run these commands from your Laravel app folder:
 
 ```bash
 composer config repositories.reference-data vcs https://github.com/hmzisb/laravel-country-currency-language-timezone-seeders-data-migrations-models
 composer require 'hmzisb/laravel-country-currency-language-timezone-seeders-data-migrations-models:^1.0'
 ```
 
-Laravel registers the service provider through package discovery. The migration is opt-in. Publish it to your app, apply it, then seed the catalogs.
+### Create the tables and load the data
+
+Laravel discovers the package automatically. You choose when to create its tables.
+
+**Already have these tables?** Adapt or skip the supplied migration if your app has `countries`, `currencies`, `languages` or `timezones`. If you installed the earlier copy-in files, keep the migration already recorded in your app and avoid publishing a duplicate.
 
 ```bash
 php artisan vendor:publish --tag=reference-data-migrations
@@ -54,86 +72,166 @@ php artisan migrate
 php artisan db:seed --class='Hmzisb\ReferenceData\Seeders\ReferenceDataSeeder'
 ```
 
-**If any of the four tables already exist**, review your schema before running `migrate`. Adapt or omit the supplied create-table migration and use your own migration for the necessary schema changes. If you previously installed the files by copying them into your app, retain the migration already recorded in your app's migration history and avoid publishing a duplicate. See the [migration notes](database/migrations/README.md) for the schema and rollback behavior.
-
-To seed the catalogs in your normal application seeding flow, add this line to the app's existing `DatabaseSeeder::run()` method.
+To include it in your app's usual seeding, add this line to `DatabaseSeeder::run()`:
 
 ```php
 $this->call(\Hmzisb\ReferenceData\Seeders\ReferenceDataSeeder::class);
 ```
 
-## Query the data
+[Migration guide](database/migrations/README.md) · [Seeder guide](src/Seeders/README.md)
+
+</details>
+
+<details>
+<summary><strong>2. Read and search the data</strong></summary>
+
+### Find a country and its options
 
 ```php
 use Hmzisb\ReferenceData\Models\Country;
+
+$country = Country::forCode('PK')->firstOrFail();
+
+$currencies = $country->currencyOptions()->get();
+$languages = $country->languageOptions()->get();
+$timezones = $country->timezoneOptions()->get();
+```
+
+### Read extra details
+
+```php
+$country->flag;                          // '🇵🇰'
+$country->details->info->capital_names;  // ['Islamabad']
+$country->details->secondary_locales;    // ['en-PK', 'ur-PK']
+```
+
+### Look up a currency, language or timezone
+
+```php
 use Hmzisb\ReferenceData\Models\Currency;
 use Hmzisb\ReferenceData\Models\Language;
 use Hmzisb\ReferenceData\Models\Timezone;
 
-$pakistan = Country::forCode('PK')->firstOrFail();
 $rupee = Currency::forCode('PKR')->firstOrFail();
 $urdu = Language::forCode('ur')->firstOrFail();
 $karachi = Timezone::forCode('Asia/Karachi')->firstOrFail();
 
-$currencies = $pakistan->currencyOptions()->orderBy('name')->get();
-$languages = $pakistan->languageOptions()->orderBy('name')->get();
-$timezones = $pakistan->timezoneOptions()->orderBy('code')->get();
+$rupee->details->symbol;    // '₨'
+$urdu->details->name_local; // 'اردو'
+```
 
-$capitalNames = $pakistan->details->info->capital_names; // ['Islamabad']
-$localeTags = $pakistan->details->secondary_locales; // ['en-PK', 'ur-PK']
-$urduName = $urdu->details->name_local; // 'اردو'
-$currencySymbol = $rupee->details->symbol; // '₨'
+### Filter countries
 
+```php
 $euroCountries = Country::withCurrencyCode('EUR')->orderBy('name')->get();
 $englishCountries = Country::withLanguageCode('en')->get();
 $karachiCountries = Country::withTimezoneCode('Asia/Karachi')->get();
 ```
 
-Use the catalog codes as stable lookups across installations. Numeric IDs are assigned by each database. Match the spelling and case in the catalog. The country option methods return query builders, so call them as methods and finish with `get()`, `pluck()`, or another query operation. They are not Eloquent relationships and cannot be loaded with `with()` or `load()`. For a list of countries, collect the unique codes and retrieve their matching rows in one query per catalog.
+Use codes such as `PK`, `PKR` and `ur` to identify records across projects. Numeric IDs can differ between databases. Codes must match the catalog's spelling and case.
 
-## Data structure
+The option methods return query builders. Finish them with `get()`, `pluck()` or another query operation. They are not Eloquent relationships, so `with()` and `load()` do not apply. When listing several countries, collect their unique codes and make one lookup query per catalog.
 
-| Table | Columns |
+</details>
+
+<details>
+<summary><strong>3. See every available field</strong></summary>
+
+### Database tables
+
+| Table | Fields |
 | --- | --- |
 | `countries` | `id`, `code`, `name`, `default_locale`, `region`, `flag`, `details`, `currency_codes`, `language_codes`, `timezone_codes` |
 | `currencies` | `id`, `code`, `name`, `minor_unit`, `details` |
 | `languages` | `id`, `code`, `name`, `details` |
 | `timezones` | `id`, `code` |
 
-Each table has a generated bigint primary key and a unique `code`. Country option lists are JSONB arrays of codes and read as PHP arrays. Each `details` column is a JSONB object and reads as a PHP object.
+Each table has a generated bigint ID and a unique code. Country options are stored as PostgreSQL JSONB arrays and read as PHP arrays. The `details` fields are JSONB objects and read as PHP objects.
 
-| JSONB metadata | Fields |
+### Extra details
+
+| Where | Fields |
 | --- | --- |
 | Country `details.info` | `name_local`, `native_names`, `capital_names`, `tlds`, `area_sq_km` |
 | Country `details.geo` | `continent`, `neighbors` (land borders), `landlocked` |
 | Country `details.postal_code` | `format`, `regex`, `normalization`, `status` |
-| Country `details.secondary_locales` | Array of selected locale tags associated with the country |
+| Country `details.secondary_locales` | Selected locale tags associated with the country |
 | Currency `details` | `local_name`, `currency_numeric`, `symbol`, and `subunit` with `name` and `units_per_major` |
 | Language `details` | `name_local`, `iso_639_1`, `iso_639_2`, `iso_639_3` |
 
-Missing metadata appears as null or an empty value. The three-digit ISO 4217 numeric code is a string, which preserves leading zeroes such as `"050"` for BDT.
+Missing values remain null or empty. Currency numeric codes are strings, so leading zeroes such as `"050"` are preserved.
 
-### Localization, money, and timezones
+</details>
 
-- Set your application's supported locales and fallbacks in its own configuration. The supplied `default_locale` values are null. The seeder checks the basic shape of custom locale tags. Full BCP 47 syntax and registry validation are outside that check.
-- `minor_unit` describes the ISO 4217 accounting exponent, when applicable. Physical subunits, cash rounding, and payment-provider precision can differ. Configure accepted currencies and rounding in your application.
-- Pass the timezone identifier and relevant date to PHP or Carbon to get the offset and daylight-saving rules for that instant.
-- Postal formats and regexes are legacy reference metadata. The optional [postal code helper](src/Support/PostalCode.php) can match a supplied pattern. Use current postal-service data for delivery validation.
+<details>
+<summary><strong>4. Customize or update the data</strong></summary>
 
-## Customize or update the catalogs
+The seeder uses the data included with the package by default.
 
-By default, the seeder uses the bundled catalogs. To edit the data in your app, publish all four files to `database/data/reference/`.
+To keep an editable copy in your app:
 
 ```bash
 php artisan vendor:publish --tag=reference-data-data
 ```
 
-If that directory exists, the seeder uses it in full. Keep all four files together. Published files continue to override the bundled files after a Composer update, so review and merge upstream catalog changes into any app-owned copy. Use `vendor:publish --tag=reference-data-data --force` only when you intend to replace the published files after reviewing and backing up local edits.
+This copies all four files to `database/data/reference/`.
 
-Run the same seed command to apply the chosen snapshot. The seeder validates all four files before writing and upserts all rows in one transaction. Matching codes keep their IDs and receive the current metadata and country arrays. Rows whose codes are absent from the new files remain in the database. See the [seeder notes](src/Seeders/README.md) for validation and reseeding details.
+- **Keep the four files together.** If this folder exists, the seeder uses it instead of the package's files.
+- **Review package updates.** Your published copy continues to take priority after a Composer update. Merge any new data you need.
+- **Use `--force` carefully.** Adding it to the publish command replaces your copy. Review and back up local edits first.
 
-## Development and licenses
+Run the seed command again to apply your chosen data.
 
-From a checkout of this repository, run `php tools/validate.php` to validate the bundled files without Laravel or PostgreSQL. See [Testing](TESTING.md) for PostgreSQL integration and offline build tests, and [Data sources](DATA-SOURCES.md#rebuilding-the-same-snapshot) to reproduce the snapshot.
+The seeder checks all four files before writing. It updates them in one transaction, so a failed write rolls back the whole change. Existing codes keep their IDs; metadata and country options are replaced. `default_locale` is replaced too, including with null. Whole rows missing from a new snapshot stay in the database until you retire them deliberately.
 
-The original package code and documentation use the [MIT license](LICENSE), which permits use, modification, redistribution, and commercial use, including sale, subject to the license notice requirement. Third-party data retains its source terms, including ODbL 1.0 for mledoze-derived country data and Unicode License V3 for CLDR data. Keep the relevant terms and attribution with the data you redistribute. See [Sources and terms](DATA-SOURCES.md#sources-and-terms) and [third-party notices](licenses/).
+[Read the seeder guide](src/Seeders/README.md)
+
+</details>
+
+<details>
+<summary><strong>5. Understand the coverage and limits</strong></summary>
+
+**Data snapshot: 19 November 2026.**
+
+| Dataset | Coverage |
+| --- | --- |
+| Countries | 249 ISO 3166-1 alpha-2 countries and territories |
+| Currencies | 178 ISO 4217 List One codes, including funds, metals and special codes |
+| Languages | All 184 ISO 639-1 codes, plus 101 three-letter codes used in country mappings |
+| Timezones | 419 IANA identifiers from PHP timezone data 2026.3, including `UTC` |
+
+A few distinctions matter when using the data:
+
+- **Languages and locales:** choose your app's supported translations and fallback separately. Supplied `default_locale` values are null. Custom locale tags receive a basic format check, not full BCP 47 validation.
+- **Money:** `minor_unit` describes accounting decimal places. Cash rounding and payment-provider rules can differ. Your app decides which currencies it accepts.
+- **Timezones:** use the timezone identifier and date with PHP or Carbon to calculate the correct offset.
+- **Postal codes:** supplied patterns are unverified legacy reference data. Use current postal-service data to validate delivery addresses. The optional [postal helper](src/Support/PostalCode.php) only checks a supplied pattern.
+
+[Data sources and coverage](DATA-SOURCES.md) · [Missing values and corrections](data-quality.json)
+
+</details>
+
+<details>
+<summary><strong>6. Run checks or rebuild the data</strong></summary>
+
+From a checkout of this repository:
+
+```bash
+php tools/validate.php
+```
+
+This checks the bundled data without Laravel or a database.
+
+[Run the tests](TESTING.md) · [Rebuild from the included sources](DATA-SOURCES.md#rebuilding-the-same-snapshot) · [Read the release review](REVIEW.md)
+
+</details>
+
+## 📄 License
+
+**Code: MIT.** You may use, modify and sell it while keeping the required license notice.
+
+**Data: separate source licenses apply**, including ODbL 1.0 for country data and Unicode License V3 for CLDR data.
+
+Keep the relevant license terms and attribution when redistributing data.
+
+[Code license](LICENSE) · [Data licenses and attribution](DATA-SOURCES.md#sources-and-terms)
