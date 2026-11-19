@@ -1,0 +1,903 @@
+{
+  "snapshot": "2026-11-19",
+  "counts": {
+    "countries": 249,
+    "currencies": 178,
+    "languages": 285,
+    "timezones": 419
+  },
+  "cldr_version": {
+    "_unicodeVersion": "16.0.0",
+    "_cldrVersion": "49"
+  },
+  "six_publication": "2026-09-17",
+  "php_timezone_version": "2026.3",
+  "iso3166_alpha2_crosscheck_count": 249,
+  "sha256": {
+    "CountriesTableSeeder.php": "43cdc64c7492afcc03b41dde4e5ebbc87e3896332830a028771f51ab61ac1b29",
+    "countries.json": "c48c0d479fc71799c8f5b1b1a6eee4a4a6a86f626c29b9db62b542bf1b8d8741",
+    "currencyData.json": "c187138fb1a91508056924caa7e11a63d4d579c2f34176949afa817f7ed63715",
+    "iso3166.tab": "837c80785080c8433fd9d4ea87e78f161ac7a40389301c5153d4f90198baeb2a",
+    "iso6393.js": "47b2e64bd7c7683c5ba578d7e39cd2b580f54f6b307a243ffac1e836a607bfbf",
+    "locales.json": "2f349f54764b071b31e7ca98b3252f5cffb94987f81e8f97129953cf7f7b71c2",
+    "php-timezone-identifiers.json": "1167b7f78351c86bf1333bdb49c4503c00850e949f7478c015d666b54e7007ee",
+    "six.xml": "33139b438657d1cee116ba737807ea71d19d6de4b90f799a09c56f0cc6a1b0ff",
+    "territoryInfo.json": "c8aa7654c87de234118f14ada0e1466eb09467bed4048da7eab3e7e63ffe335d",
+    "zone.tab": "e2e8e31c4e10f44576c79345e76060591dbb3eef6ce14e006afc8a373caa9593",
+    "zone1970.tab": "5f23781702bf51408ff1581daa109ab3b9257fb433b1554e579d92172892c0cf"
+  },
+  "legacy_only_country_codes": [
+    "AN",
+    "FX",
+    "TP",
+    "TY",
+    "YU",
+    "ZR"
+  ],
+  "official_country_codes_missing_from_legacy": [
+    "AX",
+    "BL",
+    "BQ",
+    "CW",
+    "GG",
+    "IM",
+    "JE",
+    "ME",
+    "MF",
+    "PS",
+    "SX",
+    "TL",
+    "YT"
+  ],
+  "attachment_only_country_codes": [
+    "XK"
+  ],
+  "official_country_codes_missing_from_attachment": [],
+  "countries_without_currency": [
+    "AQ"
+  ],
+  "countries_without_language": [
+    "AQ"
+  ],
+  "countries_without_timezone": [
+    "BV",
+    "HM"
+  ],
+  "countries_without_source_flag": [
+    "BQ"
+  ],
+  "attachment_country_flag_fallbacks": {
+    "BQ": "🇧🇶"
+  },
+  "countries_without_flag": [],
+  "countries_without_region": [
+    "AQ",
+    "BV",
+    "GS",
+    "HM",
+    "TF"
+  ],
+  "countries_without_area": [
+    "SJ"
+  ],
+  "countries_without_capital": [
+    "AQ",
+    "BV",
+    "HM",
+    "MO",
+    "UM"
+  ],
+  "country_neighbor_codes_outside_catalog": {
+    "AL": [
+      "UNK"
+    ],
+    "ME": [
+      "UNK"
+    ],
+    "MK": [
+      "UNK"
+    ],
+    "RS": [
+      "UNK"
+    ]
+  },
+  "country_neighbor_source_asymmetries": {
+    "LK": [
+      "IN"
+    ]
+  },
+  "country_neighbor_removals": {
+    "LK": {
+      "IN": {
+        "reason": "Sri Lanka has no land boundaries.",
+        "source": "https://www.cg-mumbai.gov.lk/en/sri-lanka"
+      }
+    }
+  },
+  "country_neighbor_asymmetries": {},
+  "postal_code_status_counts": {
+    "legacy_unverified": 149,
+    "unavailable": 100
+  },
+  "countries_without_attached_postal_format": [
+    "AE",
+    "AF",
+    "AG",
+    "AI",
+    "AL",
+    "AO",
+    "AQ",
+    "AS",
+    "AW",
+    "AX",
+    "BF",
+    "BI",
+    "BJ",
+    "BO",
+    "BQ",
+    "BS",
+    "BT",
+    "BV",
+    "BW",
+    "BZ",
+    "CC",
+    "CD",
+    "CF",
+    "CG",
+    "CI",
+    "CK",
+    "CM",
+    "CO",
+    "CW",
+    "DJ",
+    "DM",
+    "EH",
+    "ER",
+    "FJ",
+    "FK",
+    "GA",
+    "GD",
+    "GH",
+    "GI",
+    "GM",
+    "GN",
+    "GQ",
+    "GS",
+    "GY",
+    "HK",
+    "HM",
+    "IE",
+    "IO",
+    "JM",
+    "KI",
+    "KM",
+    "KN",
+    "KY",
+    "LC",
+    "LY",
+    "MH",
+    "ML",
+    "MO",
+    "MP",
+    "MR",
+    "MS",
+    "MU",
+    "MW",
+    "NA",
+    "NF",
+    "NR",
+    "NU",
+    "PA",
+    "PN",
+    "PS",
+    "QA",
+    "RW",
+    "SB",
+    "SC",
+    "SJ",
+    "SL",
+    "SR",
+    "SS",
+    "ST",
+    "SX",
+    "SY",
+    "TD",
+    "TF",
+    "TG",
+    "TK",
+    "TL",
+    "TO",
+    "TT",
+    "TV",
+    "TZ",
+    "UG",
+    "UM",
+    "VA",
+    "VC",
+    "VG",
+    "VI",
+    "VU",
+    "WS",
+    "YE",
+    "ZW"
+  ],
+  "countries_without_attached_postal_regex": [
+    "AE",
+    "AF",
+    "AG",
+    "AI",
+    "AL",
+    "AO",
+    "AQ",
+    "AS",
+    "AW",
+    "AX",
+    "BF",
+    "BI",
+    "BJ",
+    "BL",
+    "BO",
+    "BQ",
+    "BS",
+    "BT",
+    "BV",
+    "BW",
+    "BZ",
+    "CC",
+    "CD",
+    "CF",
+    "CG",
+    "CI",
+    "CK",
+    "CM",
+    "CO",
+    "CW",
+    "DJ",
+    "DM",
+    "EH",
+    "ER",
+    "FJ",
+    "FK",
+    "GA",
+    "GD",
+    "GH",
+    "GI",
+    "GM",
+    "GN",
+    "GQ",
+    "GS",
+    "GY",
+    "HK",
+    "HM",
+    "IE",
+    "IO",
+    "JM",
+    "KI",
+    "KM",
+    "KN",
+    "KY",
+    "LC",
+    "LY",
+    "MF",
+    "MH",
+    "ML",
+    "MO",
+    "MP",
+    "MR",
+    "MS",
+    "MU",
+    "MW",
+    "NA",
+    "NF",
+    "NR",
+    "NU",
+    "PA",
+    "PN",
+    "PS",
+    "QA",
+    "RW",
+    "SB",
+    "SC",
+    "SJ",
+    "SL",
+    "SR",
+    "SS",
+    "ST",
+    "SX",
+    "SY",
+    "TD",
+    "TF",
+    "TG",
+    "TK",
+    "TL",
+    "TO",
+    "TT",
+    "TV",
+    "TZ",
+    "UG",
+    "UM",
+    "VA",
+    "VC",
+    "VG",
+    "VI",
+    "VU",
+    "WS",
+    "YE",
+    "ZW"
+  ],
+  "countries_with_postal_format_without_regex": [
+    "BL",
+    "MF"
+  ],
+  "countries_without_native_name": [
+    "AQ"
+  ],
+  "countries_without_native_names": [
+    "AQ"
+  ],
+  "countries_without_continent": [],
+  "countries_without_secondary_locale": [
+    "AQ"
+  ],
+  "languages_without_native_name": [
+    "ab",
+    "ady",
+    "ak",
+    "arc",
+    "an",
+    "as",
+    "ast",
+    "av",
+    "ae",
+    "ba",
+    "bm",
+    "bar",
+    "ber",
+    "bjt",
+    "bjz",
+    "bo",
+    "br",
+    "bsc",
+    "bua",
+    "bwg",
+    "caa",
+    "cak",
+    "cal",
+    "ceb",
+    "ce",
+    "chp",
+    "cu",
+    "cv",
+    "ckb",
+    "cnr",
+    "kw",
+    "co",
+    "cr",
+    "crk",
+    "crs",
+    "csb",
+    "cy",
+    "den",
+    "dgr",
+    "dyo",
+    "eo",
+    "eu",
+    "ee",
+    "fil",
+    "fr",
+    "frr",
+    "fy",
+    "gaa",
+    "gil",
+    "gd",
+    "gl",
+    "gsw",
+    "gu",
+    "gwi",
+    "hak",
+    "ha",
+    "haw",
+    "sh",
+    "hz",
+    "hgm",
+    "hil",
+    "ho",
+    "ig",
+    "io",
+    "ii",
+    "iu",
+    "ie",
+    "ilo",
+    "ia",
+    "inh",
+    "ik",
+    "ixl",
+    "jam",
+    "jv",
+    "kn",
+    "ks",
+    "kr",
+    "kbd",
+    "kck",
+    "kha",
+    "khi",
+    "ki",
+    "knf",
+    "koi",
+    "kok",
+    "kv",
+    "krc",
+    "kj",
+    "kum",
+    "kwn",
+    "lbe",
+    "lez",
+    "li",
+    "loz",
+    "lua",
+    "lg",
+    "mai",
+    "ml",
+    "mr",
+    "mdf",
+    "mdh",
+    "mey",
+    "mfe",
+    "mfv",
+    "myv",
+    "nan",
+    "nv",
+    "ndc",
+    "ng",
+    "nfr",
+    "niu",
+    "nrf",
+    "nso",
+    "nzs",
+    "oc",
+    "oj",
+    "or",
+    "om",
+    "os",
+    "pag",
+    "pap",
+    "pau",
+    "pih",
+    "pi",
+    "pov",
+    "prs",
+    "quc",
+    "quv",
+    "sah",
+    "sa",
+    "sat",
+    "sav",
+    "sfs",
+    "se",
+    "smi",
+    "sms",
+    "sd",
+    "snf",
+    "sc",
+    "srr",
+    "su",
+    "ty",
+    "tt",
+    "te",
+    "tet",
+    "tl",
+    "tkl",
+    "tnr",
+    "toi",
+    "tpi",
+    "tsg",
+    "tvl",
+    "tw",
+    "tyv",
+    "tzm",
+    "udm",
+    "ug",
+    "usp",
+    "vec",
+    "vo",
+    "war",
+    "wa",
+    "wni",
+    "wo",
+    "xin",
+    "yi",
+    "yo",
+    "yue",
+    "zdj",
+    "za",
+    "zib"
+  ],
+  "attachment_language_code_conflicts": {
+    "ms-MY": [
+      {
+        "name": "Malaysian",
+        "claimed_identifiers": {
+          "iso_639_1": "ms",
+          "iso_639_2": "zsm",
+          "iso_639_3": "msa"
+        },
+        "resolved_language_ids": [
+          "msa",
+          "zsm"
+        ],
+        "reason": "Conflicting language identifiers"
+      }
+    ]
+  },
+  "attachment_language_code_corrections": {
+    "hif": {
+      "name": "Fiji Hindi",
+      "attachment_field": "iso_639_2",
+      "verified_field": "iso_639_3"
+    }
+  },
+  "currencies_without_minor_unit": [
+    "XAG",
+    "XAU",
+    "XBA",
+    "XBB",
+    "XBC",
+    "XBD",
+    "XDR",
+    "XPD",
+    "XPT",
+    "XSU",
+    "XTS",
+    "XUA",
+    "XXX"
+  ],
+  "currencies_without_local_name": [
+    "BOV",
+    "BYN",
+    "CHE",
+    "CHW",
+    "CLF",
+    "COU",
+    "DKK",
+    "MRU",
+    "MXV",
+    "NOK",
+    "SLE",
+    "STN",
+    "SVC",
+    "USN",
+    "UYI",
+    "UYW",
+    "VED",
+    "VES",
+    "XAD",
+    "XAG",
+    "XAU",
+    "XBA",
+    "XBB",
+    "XBC",
+    "XBD",
+    "XDR",
+    "XPD",
+    "XPT",
+    "XSU",
+    "XTS",
+    "XUA",
+    "XXX",
+    "ZWG"
+  ],
+  "currencies_without_symbol": [
+    "BOV",
+    "CHE",
+    "CHF",
+    "CHW",
+    "CLF",
+    "COU",
+    "DKK",
+    "MAD",
+    "MXV",
+    "SVC",
+    "USN",
+    "UYI",
+    "UYW",
+    "VED",
+    "XAD",
+    "XAG",
+    "XAU",
+    "XBA",
+    "XBB",
+    "XBC",
+    "XBD",
+    "XDR",
+    "XPD",
+    "XPT",
+    "XSU",
+    "XTS",
+    "XUA",
+    "XXX"
+  ],
+  "currencies_without_subunit": [
+    "BIF",
+    "BOV",
+    "BYN",
+    "CHE",
+    "CHW",
+    "CLF",
+    "CLP",
+    "COU",
+    "DJF",
+    "GNF",
+    "ISK",
+    "JPY",
+    "KMF",
+    "KRW",
+    "MRU",
+    "MXV",
+    "PYG",
+    "RWF",
+    "SLE",
+    "STN",
+    "SVC",
+    "UGX",
+    "USN",
+    "UYI",
+    "UYW",
+    "VES",
+    "VND",
+    "VUV",
+    "XAD",
+    "XAF",
+    "XAG",
+    "XAU",
+    "XBA",
+    "XBB",
+    "XBC",
+    "XBD",
+    "XDR",
+    "XOF",
+    "XPD",
+    "XPF",
+    "XPT",
+    "XSU",
+    "XTS",
+    "XUA",
+    "XXX",
+    "ZWG"
+  ],
+  "attachment_currency_differences": {
+    "BG": {
+      "attachment": [
+        "BGN"
+      ],
+      "active_cldr": [
+        "EUR"
+      ]
+    },
+    "BT": {
+      "attachment": [
+        "BTN"
+      ],
+      "active_cldr": [
+        "BTN",
+        "INR"
+      ]
+    },
+    "BY": {
+      "attachment": [
+        "BYR"
+      ],
+      "active_cldr": [
+        "BYN"
+      ]
+    },
+    "CK": {
+      "attachment": [
+        "CKD"
+      ],
+      "active_cldr": [
+        "NZD"
+      ]
+    },
+    "FO": {
+      "attachment": [
+        "FOK"
+      ],
+      "active_cldr": [
+        "DKK"
+      ]
+    },
+    "GG": {
+      "attachment": [
+        "GGP"
+      ],
+      "active_cldr": [
+        "GBP"
+      ]
+    },
+    "HT": {
+      "attachment": [
+        "HTG"
+      ],
+      "active_cldr": [
+        "HTG",
+        "USD"
+      ]
+    },
+    "IM": {
+      "attachment": [
+        "IMP"
+      ],
+      "active_cldr": [
+        "GBP"
+      ]
+    },
+    "JE": {
+      "attachment": [
+        "JEP"
+      ],
+      "active_cldr": [
+        "GBP"
+      ]
+    },
+    "KI": {
+      "attachment": [
+        "KID"
+      ],
+      "active_cldr": [
+        "AUD"
+      ]
+    },
+    "LS": {
+      "attachment": [
+        "LSL"
+      ],
+      "active_cldr": [
+        "LSL",
+        "ZAR"
+      ]
+    },
+    "MR": {
+      "attachment": [
+        "MRO"
+      ],
+      "active_cldr": [
+        "MRU"
+      ]
+    },
+    "NA": {
+      "attachment": [
+        "NAD"
+      ],
+      "active_cldr": [
+        "NAD",
+        "ZAR"
+      ]
+    },
+    "PA": {
+      "attachment": [
+        "PAB"
+      ],
+      "active_cldr": [
+        "PAB",
+        "USD"
+      ]
+    },
+    "PS": {
+      "attachment": [
+        "ILS"
+      ],
+      "active_cldr": [
+        "ILS",
+        "JOD"
+      ]
+    },
+    "SL": {
+      "attachment": [
+        "SLL"
+      ],
+      "active_cldr": [
+        "SLE"
+      ]
+    },
+    "ST": {
+      "attachment": [
+        "STD"
+      ],
+      "active_cldr": [
+        "STN"
+      ]
+    },
+    "TV": {
+      "attachment": [
+        "TVD"
+      ],
+      "active_cldr": [
+        "AUD"
+      ]
+    },
+    "VE": {
+      "attachment": [
+        "VED"
+      ],
+      "active_cldr": [
+        "VES"
+      ]
+    },
+    "ZW": {
+      "attachment": [
+        "ZWL"
+      ],
+      "active_cldr": [
+        "USD",
+        "ZWG"
+      ]
+    }
+  },
+  "active_cldr_currency_codes_missing_from_six": {},
+  "iana_country_timezones_missing_from_php": {},
+  "country_language_codes_missing_from_iso6393": {},
+  "iso6392_language_collections": {
+    "ber": "Berber",
+    "khi": "Khoisan",
+    "smi": "Sami"
+  },
+  "cldr_language_codes_outside_supported_iso_catalogs": {},
+  "discarded_attachment_locale_tags": {
+    "AQ": [
+      "en-AQ",
+      "ru-AQ"
+    ],
+    "AW": [
+      "pa-AW"
+    ],
+    "BF": [
+      "ff-BF"
+    ],
+    "BV": [
+      "nb-BV",
+      "nn-BV"
+    ],
+    "CD": [
+      "lu-CD"
+    ],
+    "CW": [
+      "pa-CW"
+    ],
+    "CY": [
+      "hy-CY"
+    ],
+    "ER": [
+      "aa-ER",
+      "byn-ER",
+      "kun-ER",
+      "nrb-ER",
+      "ssy-ER",
+      "tig-ER"
+    ],
+    "FJ": [
+      "rtm-FJ"
+    ],
+    "GN": [
+      "ff-GN"
+    ],
+    "GQ": [
+      "fan-GQ"
+    ],
+    "IQ": [
+      "ku-IQ"
+    ],
+    "ME": [
+      "bs-ME",
+      "hr-ME",
+      "sq-ME"
+    ],
+    "MF": [
+      "en-MF",
+      "nl-MF"
+    ],
+    "VA": [
+      "de-VA",
+      "fr-VA"
+    ]
+  }
+}

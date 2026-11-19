@@ -1,0 +1,60 @@
+{
+    "name": "hmzisb/laravel-country-currency-language-timezone-seeders-data-migrations-models",
+    "description": "Country, currency, language, and time zone catalogs for Laravel and PostgreSQL. MIT applies to the code. Bundled data terms are in DATA-SOURCES.md.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-pdo_pgsql": "*",
+        "illuminate/database": "^12.0 || ^13.0",
+        "illuminate/support": "^12.0 || ^13.0"
+    },
+    "require-dev": {
+        "laravel/framework": "^12.0 || ^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hmzisb\\ReferenceData\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hmzisb\\ReferenceData\\ReferenceDataServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "validate-data": "@php tools/validate.php",
+        "test": "@php tests/run.php",
+        "build-tests": "python3 -B tests/test_build.py"
+    },
+    "keywords": [
+        "laravel",
+        "countries",
+        "currencies",
+        "languages",
+        "timezones",
+        "seeders",
+        "migrations",
+        "eloquent",
+        "postgresql",
+        "iso-3166",
+        "iso-4217",
+        "iso-639",
+        "iana"
+    ],
+    "homepage": "https://github.com/hmzisb/laravel-country-currency-language-timezone-seeders-data-migrations-models",
+    "authors": [
+        {
+            "name": "Hamza Ahmed",
+            "homepage": "https://github.com/hmzisb"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/hmzisb/laravel-country-currency-language-timezone-seeders-data-migrations-models/issues",
+        "source": "https://github.com/hmzisb/laravel-country-currency-language-timezone-seeders-data-migrations-models"
+    }
+}

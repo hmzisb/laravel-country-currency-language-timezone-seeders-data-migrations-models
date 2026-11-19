@@ -1,0 +1,84 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  postgresql:
+    name: Laravel ${{ matrix.laravel }} on PHP ${{ matrix.php }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.2'
+            laravel: '12'
+          - php: '8.3'
+            laravel: '13'
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: reference_data_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d reference_data_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          # The catalog contains IANA zones newer than the tzdb bundled with some PHP releases.
+          extensions: mbstring, pdo_pgsql, timezonedb
+          tools: composer:v2
+          coverage: none
+      - name: Validate Composer manifest
+        run: composer validate --strict
+      - name: Install the target Laravel version
+        env:
+          LARAVEL_MAJOR: ${{ matrix.laravel }}
+        run: |
+          composer require --dev "laravel/framework:^${LARAVEL_MAJOR}.0" --no-update --no-interaction
+          composer update --prefer-dist --no-progress --no-interaction
+      - name: Lint PHP files
+        run: |
+          find src database/migrations tests tools -path tools/sources -prune -o -name '*.php' \
+            -exec sh -ec 'for file do php -l "$file"; done' sh {} +
+      - name: Validate the bundled snapshot
+        run: composer validate-data
+      - name: Run PostgreSQL integration tests
+        env:
+          REF_TEST_DATABASE: reference_data_test
+          REF_TEST_USER: postgres
+          REF_TEST_PASSWORD: postgres
+          REF_TEST_PORT: ${{ job.services.postgres.ports['5432'] }}
+        run: composer test
+
+  builder:
+    name: Offline catalog builder
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Run builder regression tests
+        run: python3 -B tests/test_build.py

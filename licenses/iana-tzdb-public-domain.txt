@@ -1,0 +1,8 @@
+IANA Time Zone Database
+
+The zone.tab, zone1970.tab and iso3166.tab source headers identify the
+tables as public-domain material. Identifiers and country mappings in
+this bundle are derived from those tables and the PHP timezone registry.
+
+https://www.iana.org/time-zones
+https://data.iana.org/time-zones/tzdb/

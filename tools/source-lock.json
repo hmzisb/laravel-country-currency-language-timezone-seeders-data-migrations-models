@@ -1,0 +1,17 @@
+{
+  "snapshot": "2026-11-19",
+  "php_timezone_version": "2026.3",
+  "sha256": {
+    "CountriesTableSeeder.php": "43cdc64c7492afcc03b41dde4e5ebbc87e3896332830a028771f51ab61ac1b29",
+    "countries.json": "c48c0d479fc71799c8f5b1b1a6eee4a4a6a86f626c29b9db62b542bf1b8d8741",
+    "currencyData.json": "c187138fb1a91508056924caa7e11a63d4d579c2f34176949afa817f7ed63715",
+    "iso3166.tab": "837c80785080c8433fd9d4ea87e78f161ac7a40389301c5153d4f90198baeb2a",
+    "iso6393.js": "47b2e64bd7c7683c5ba578d7e39cd2b580f54f6b307a243ffac1e836a607bfbf",
+    "locales.json": "2f349f54764b071b31e7ca98b3252f5cffb94987f81e8f97129953cf7f7b71c2",
+    "php-timezone-identifiers.json": "1167b7f78351c86bf1333bdb49c4503c00850e949f7478c015d666b54e7007ee",
+    "six.xml": "33139b438657d1cee116ba737807ea71d19d6de4b90f799a09c56f0cc6a1b0ff",
+    "territoryInfo.json": "c8aa7654c87de234118f14ada0e1466eb09467bed4048da7eab3e7e63ffe335d",
+    "zone.tab": "e2e8e31c4e10f44576c79345e76060591dbb3eef6ce14e006afc8a373caa9593",
+    "zone1970.tab": "5f23781702bf51408ff1581daa109ab3b9257fb433b1554e579d92172892c0cf"
+  }
+}

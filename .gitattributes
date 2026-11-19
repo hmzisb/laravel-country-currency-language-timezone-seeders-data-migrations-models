@@ -1,0 +1,6 @@
+* text=auto eol=lf
+
+# The data builder verifies the original bytes against the source lock.
+tools/sources/** -text !eol linguist-vendored
+database/data/reference/*.json linguist-generated
+data-quality.json linguist-generated
